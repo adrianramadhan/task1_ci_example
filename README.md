@@ -232,3 +232,73 @@ class Books extends BaseController {
             . view('templates/footer');
     }
 ```
+
+## VIEW
+
+### Halaman View untuk menampilkan semua buku yang ada di Database
+```
+index.php
+
+<h2><?= esc($title) ?></h2>
+
+<?php if (! empty($books) && is_array($books)): ?>
+
+    <?php foreach ($books as $books_item): ?>
+
+        <h3><?= esc($books_item['title']) ?></h3>
+
+        <div class="main">
+            <?= esc($books_item['content']) ?>
+        </div>
+        <p><a href="/books/<?= esc($books_item['slug'], 'url') ?>">View article</a></p>
+
+    <?php endforeach ?>
+
+<?php else: ?>
+
+    <h3>No Books</h3>
+
+    <p>Unable to find any books for you.</p>
+
+<?php endif ?>
+```
+
+### Halaman View untuk menampilkan detail buku yang kita pilih
+```
+view.php
+
+<h2><?= esc($books['title']) ?></h2>
+<p><?= esc($books['content']) ?></p>
+```
+
+### Halaman View untuk menambahkan buku baru
+```
+create.php
+
+<h2><?= esc($title) ?></h2>
+
+<?= session()->getFlashdata('error') ?>
+<?= validation_list_errors() ?>
+
+<form action="/books" method="post">
+    <?= csrf_field() ?>
+
+    <label for="title">Books Title</label>
+    <input type="input" name="title" value="<?= set_value('title') ?>">
+    <br>
+
+    <label for="content">Books Content</label>
+    <textarea name="content" cols="45" rows="4"><?= set_value('content') ?></textarea>
+    <br>
+
+    <input type="submit" name="submit" value="Create books item">
+</form>
+```
+
+### Halaman View untuk tampilan sukses tambah buku
+```
+success.php
+
+<p>Books item created successfully.</p>
+
+```
