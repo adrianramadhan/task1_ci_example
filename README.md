@@ -68,3 +68,21 @@ database.default.password =
 database.default.DBDriver = Postgre
 database.default.port = 5432
 ```
+
+## Konfigurasi Environment
+
+### Development Environment
+```
+CI_ENVIRONMENT = development
+```
+
+### Testing Environment
+```
+CI_ENVIRONMENT = testing
+```
+
+### Production Environment
+```
+CI_ENVIRONMENT = production
+```
+Setelah mengatur nilai CI_ENVIRONMENT, CodeIgniter akan menggunakan konfigurasi yang sesuai untuk lingkungan yang ditentukan. Anda dapat menggunakan nilai ini untuk mengonfigurasi setelan aplikasi lainnya, seperti koneksi database, URL, dll.
