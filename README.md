@@ -1,68 +1,70 @@
-# CodeIgniter 4 Application Starter
+# Adrian Putra Ramadhan - 220302074
 
-## What is CodeIgniter?
+# CodeIgniter 4 Projek Basic
 
-CodeIgniter is a PHP full-stack web framework that is light, fast, flexible and secure.
-More information can be found at the [official site](https://codeigniter.com).
+## Apa itu CodeIgniter?
 
-This repository holds a composer-installable app starter.
-It has been built from the
-[development repository](https://github.com/codeigniter4/CodeIgniter4).
+CodeIgniter merupakan aplikasi FullStack sumber terbuka yang yang ringan, cepat, fleksibel, dan aman. Codeigniter juga merupakan kerangka kerja PHP dengan model MVC (Model, View, Controller) untuk membangun situs web dinamis dengan menggunakan PHP. CodeIgniter memudahkan pengembang web untuk membuat aplikasi web dengan cepat dan mudah dibandingkan dengan membuatnya dari awal
 
-More information about the plans for version 4 can be found in [CodeIgniter 4](https://forum.codeigniter.com/forumdisplay.php?fid=28) on the forums.
+## Persyaratan
 
-You can read the [user guide](https://codeigniter.com/user_guide/)
-corresponding to the latest version of the framework.
+- PHP ver 8.1.10+
+- Composer ver 2.5.5+
+- PostgreSQL ver 16.2+
 
-## Installation & updates
+## Menjalankan project
+Untuk menjalankan project, buka direktori project pada terminal dan jalankan perintah berikut ini. Aplikasi akan secara default berjalan pada port 8080
 
-`composer create-project codeigniter4/appstarter` then `composer update` whenever
-there is a new release of the framework.
+```shell
+php spark serve
+```
 
-When updating, check the release notes to see if there are any changes you might need to apply
-to your `app` folder. The affected files can be copied or merged from
-`vendor/codeigniter4/framework/app`.
+Untuk menentukan port yang digunakan aplikasi, tambahkan argument `--port`
 
-## Setup
+```shell
+php spark serve --port 80
+```
 
-Copy `env` to `.env` and tailor for your app, specifically the baseURL
-and any database settings.
+## Arsitektur MVC(Model View Controller)
 
-## Important Change with index.php
+### Pengertian MVC
+![image](https://github.com/adrianramadhan/task1_ci_example/assets/59206760/2abf2c80-7b1f-41c0-b167-1c7cb605753c)
 
-`index.php` is no longer in the root of the project! It has been moved inside the *public* folder,
-for better security and separation of components.
+Model View Controller atau yang dapat disingkat MVC adalah sebuah pola arsitektur dalam membuat sebuah aplikasi dengan cara memisahkan kode menjadi tiga bagian yang terdiri dari:
 
-This means that you should configure your web server to "point" to your project's *public* folder, and
-not to the project root. A better practice would be to configure a virtual host to point there. A poor practice would be to point your web server to the project root and expect to enter *public/...*, as the rest of your logic and the
-framework are exposed.
+Model ->
+Bagian yang bertugas untuk menyiapkan, mengatur, memanipulasi, dan mengorganisasikan data yang ada di database.
 
-**Please** read the user guide for a better explanation of how CI4 works!
+View ->
+Bagian yang bertugas untuk menampilkan informasi dalam bentuk Graphical User Interface (GUI).
 
-## Repository Management
+Controller ->
+Bagian yang bertugas untuk menghubungkan serta mengatur model dan view agar dapat saling terhubung.
 
-We use GitHub issues, in our main repository, to track **BUGS** and to track approved **DEVELOPMENT** work packages.
-We use our [forum](http://forum.codeigniter.com) to provide SUPPORT and to discuss
-FEATURE REQUESTS.
+### Alur Model View Controller
+Setelah kamu mengetahui penjelasan dan komponen dari MVC, sekarang kita akan membahas alur proses dari MVC. Berikut ini adalah alur prosesnya.
 
-This repository is a "distribution" one, built by our release preparation script.
-Problems with it can be raised on our forum, or as issues in the main repository.
+Proses pertama adalah view akan meminta data untuk ditampilkan dalam bentuk grafis kepada pengguna.
+Permintaan tersebut diterima oleh controller dan diteruskan ke model untuk diproses.
+Model akan mencari dan mengolah data yang diminta di dalam database
+Setelah data ditemukan dan diolah, model akan mengirimkan data tersebut kepada controller untuk ditampilkan di view.
+Controller akan mengambil data hasil pengolahan model dan mengaturnya di bagian view untuk ditampilkan kepada pengguna.
 
-## Server Requirements
+## Menentukan Base URL
+Base URL akan digunakan pada saat sistem melakukan pengalihan.
+```
+app.baseURL = 'http://localhost:8080/'
+```
 
-PHP version 7.4 or higher is required, with the following extensions installed:
+## Konfigurasi database
+Lakukan konfigurasi database untuk menghubungkan aplikasi dengan database
+Berikut contoh konfigurasi Database Local saya
 
-- [intl](http://php.net/manual/en/intl.requirements.php)
-- [mbstring](http://php.net/manual/en/mbstring.installation.php)
-
-> [!WARNING]
-> The end of life date for PHP 7.4 was November 28, 2022.
-> The end of life date for PHP 8.0 was November 26, 2023.
-> If you are still using PHP 7.4 or 8.0, you should upgrade immediately.
-> The end of life date for PHP 8.1 will be November 25, 2024.
-
-Additionally, make sure that the following extensions are enabled in your PHP:
-
-- json (enabled by default - don't turn it off)
-- [mysqlnd](http://php.net/manual/en/mysqlnd.install.php) if you plan to use MySQL
-- [libcurl](http://php.net/manual/en/curl.requirements.php) if you plan to use the HTTP\CURLRequest library
+```
+database.default.hostname = localhost
+database.default.database = books
+database.default.username = postgres
+database.default.password = 
+database.default.DBDriver = Postgre
+database.default.port = 5432
+```
