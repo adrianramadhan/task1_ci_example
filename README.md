@@ -23,10 +23,22 @@ Untuk menentukan port yang digunakan aplikasi, tambahkan argument `--port`
 php spark serve --port 80
 ```
 
-## Setup
+## Arsitektur MVC(Model View Controller)
 
-Copy `env` to `.env` and tailor for your app, specifically the baseURL
-and any database settings.
+### Pengertian MVC
+![image](https://github.com/adrianramadhan/task1_ci_example/assets/59206760/2abf2c80-7b1f-41c0-b167-1c7cb605753c)
+
+Model View Controller atau yang dapat disingkat MVC adalah sebuah pola arsitektur dalam membuat sebuah aplikasi dengan cara memisahkan kode menjadi tiga bagian yang terdiri dari:
+
+Model
+Bagian yang bertugas untuk menyiapkan, mengatur, memanipulasi, dan mengorganisasikan data yang ada di database.
+
+View
+Bagian yang bertugas untuk menampilkan informasi dalam bentuk Graphical User Interface (GUI).
+
+Controller
+Bagian yang bertugas untuk menghubungkan serta mengatur model dan view agar dapat saling terhubung.
+
 
 ## Important Change with index.php
 
