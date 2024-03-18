@@ -3,6 +3,7 @@
 # CodeIgniter 4 Projek Basic
 
 ## Apa itu CodeIgniter?
+![Uploading image.png…]()
 
 CodeIgniter merupakan aplikasi FullStack sumber terbuka yang yang ringan, cepat, fleksibel, dan aman. Codeigniter juga merupakan kerangka kerja PHP dengan model MVC (Model, View, Controller) untuk membangun situs web dinamis dengan menggunakan PHP. CodeIgniter memudahkan pengembang web untuk membuat aplikasi web dengan cepat dan mudah dibandingkan dengan membuatnya dari awal
 
