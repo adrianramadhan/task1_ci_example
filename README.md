@@ -3,6 +3,7 @@
 # CodeIgniter 4 Projek Basic
 
 ## Apa itu CodeIgniter?
+![image](https://github.com/adrianramadhan/task1_ci_example/assets/59206760/f5a02b1a-693e-432c-b183-ccf6d42da4fb)
 
 CodeIgniter merupakan aplikasi FullStack sumber terbuka yang yang ringan, cepat, fleksibel, dan aman. Codeigniter juga merupakan kerangka kerja PHP dengan model MVC (Model, View, Controller) untuk membangun situs web dinamis dengan menggunakan PHP. CodeIgniter memudahkan pengembang web untuk membuat aplikasi web dengan cepat dan mudah dibandingkan dengan membuatnya dari awal
 
@@ -67,4 +68,70 @@ database.default.username = postgres
 database.default.password = 
 database.default.DBDriver = Postgre
 database.default.port = 5432
+```
+
+## Konfigurasi Environment
+
+### Development Environment
+```
+CI_ENVIRONMENT = development
+```
+
+### Testing Environment
+```
+CI_ENVIRONMENT = testing
+```
+
+### Production Environment
+```
+CI_ENVIRONMENT = production
+```
+Setelah mengatur nilai CI_ENVIRONMENT, CodeIgniter akan menggunakan konfigurasi yang sesuai untuk lingkungan yang ditentukan. Anda dapat menggunakan nilai ini untuk mengonfigurasi setelan aplikasi lainnya, seperti koneksi database, URL, dll.
+
+## ROUTES
+Untuk melakukan Routes pada Framework CodeIgniter$ bisa dilakukan di folder `App/Config/Routes.php`, berikut Route yang saya gunakan di Projek Aplikasi Basic saya
+
+### Get Method
+GET Method digunakan untuk membaca atau mengambil data, berikut beberapa GET Method yang digunakan di Route Aplikasi saya:
+```
+$routes->get('books', [Books::class, 'index']);
+$routes->get('books/new', [Books::class, 'new']);
+$routes->get('books/(:segment)', [Books::class, 'show']);
+$routes->get('pages', [Pages::class, 'index']);
+$routes->get('(:segment)', [Pages::class, 'view']);
+```
+
+### Post Method
+POST Method digunakan untuk mengirim atau mengirimkan data yang akan diolah atau disimpan di server, berikut beberapa POST Method yang saya gunakan di Route Aplikasi saya:
+```
+$routes->post('books', [Books::class, 'create']);
+```
+
+## MODEL
+Model merupakan salah satu komponen penting dalam pengembangan web menggunakan framework CodeIgniter. Secara sederhana, Model merupakan representasi objek dalam database yang memungkinkan kita untuk berinteraksi dengan data pada database secara mudah dan efisien, pada framework CodeIgniter sendiri Model terdapat di folder `App/Models`, berikut Models yang saya gunakan pada projek aplikasi basic saya
+```
+BooksModels.php
+
+<?php
+
+namespace App\Models;
+
+use CodeIgniter\Model;
+
+class BooksModel extends Model
+{
+    protected $table = 'book';
+
+    protected $allowedFields = ['title', 'slug', 'content'];
+
+    public function getBooks($slug = false)
+    {
+        if ($slug === false) {
+            return $this->findAll();
+        }
+
+        return $this->where(['slug' => $slug])->first();
+    }
+}
+
 ```
