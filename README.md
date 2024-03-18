@@ -105,5 +105,33 @@ $routes->get('(:segment)', [Pages::class, 'view']);
 POST Method digunakan untuk mengirim atau mengirimkan data yang akan diolah atau disimpan di server, berikut beberapa POST Method yang saya gunakan di Route Aplikasi saya:
 ```
 $routes->post('books', [Books::class, 'create']);
+```
+
+## MODEL
+Model merupakan salah satu komponen penting dalam pengembangan web menggunakan framework CodeIgniter. Secara sederhana, Model merupakan representasi objek dalam database yang memungkinkan kita untuk berinteraksi dengan data pada database secara mudah dan efisien, pada framework CodeIgniter sendiri Model terdapat di folder `App/Models`, berikut Models yang saya gunakan pada projek aplikasi basic saya
+```
+BooksModels.php
+
+<?php
+
+namespace App\Models;
+
+use CodeIgniter\Model;
+
+class BooksModel extends Model
+{
+    protected $table = 'book';
+
+    protected $allowedFields = ['title', 'slug', 'content'];
+
+    public function getBooks($slug = false)
+    {
+        if ($slug === false) {
+            return $this->findAll();
+        }
+
+        return $this->where(['slug' => $slug])->first();
+    }
+}
 
 ```
