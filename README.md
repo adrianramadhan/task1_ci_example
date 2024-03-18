@@ -86,3 +86,23 @@ CI_ENVIRONMENT = testing
 CI_ENVIRONMENT = production
 ```
 Setelah mengatur nilai CI_ENVIRONMENT, CodeIgniter akan menggunakan konfigurasi yang sesuai untuk lingkungan yang ditentukan. Anda dapat menggunakan nilai ini untuk mengonfigurasi setelan aplikasi lainnya, seperti koneksi database, URL, dll.
+
+## ROUTES
+Untuk melakukan Routes pada Framework CodeIgniter$ bisa dilakukan di folder `App/Config/Routes.php`, berikut Route yang saya gunakan di Projek Aplikasi Basic saya
+
+### Get Method
+GET Method digunakan untuk membaca atau mengambil data, berikut beberapa GET Method yang digunakan di Route Aplikasi saya:
+```
+$routes->get('books', [Books::class, 'index']);
+$routes->get('books/new', [Books::class, 'new']);
+$routes->get('books/(:segment)', [Books::class, 'show']);
+$routes->get('pages', [Pages::class, 'index']);
+$routes->get('(:segment)', [Pages::class, 'view']);
+```
+
+### Post Method
+POST Method digunakan untuk mengirim atau mengirimkan data yang akan diolah atau disimpan di server, berikut beberapa POST Method yang saya gunakan di Route Aplikasi saya:
+```
+$routes->post('books', [Books::class, 'create']);
+
+```
