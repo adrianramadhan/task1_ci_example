@@ -14,7 +14,10 @@ CodeIgniter merupakan aplikasi FullStack sumber terbuka yang yang ringan, cepat,
 - PostgreSQL ver 16.2+
 
 ## Menjalankan project
-Lakukan Command berikut terlebih dahulu `https://github.com/adrianramadhan/task1_ci_example.git`, lalu:
+Lakukan Clone Project terlebih dahulu
+```
+https://github.com/adrianramadhan/task1_ci_example.git
+```
 
 Untuk menjalankan project, buka direktori project pada terminal dan jalankan perintah berikut ini. Aplikasi akan secara default berjalan pada port 8080
 
