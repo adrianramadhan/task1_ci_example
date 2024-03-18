@@ -56,12 +56,13 @@ app.baseURL = 'http://localhost:8080/'
 
 ## Konfigurasi database
 Lakukan konfigurasi database untuk menghubungkan aplikasi dengan database
+Berikut contoh konfigurasi Database Local saya
 
 ```
 database.default.hostname = localhost
-database.default.database = movies
+database.default.database = books
 database.default.username = postgres
-database.default.password = root
+database.default.password = 
 database.default.DBDriver = Postgre
 database.default.port = 5432
 ```
