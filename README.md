@@ -10,6 +10,19 @@ CodeIgniter merupakan aplikasi FullStack sumber terbuka yang yang ringan, cepat,
 - Composer ver 2.5.5+
 - PostgreSQL ver 16.2+
 
+## Menjalankan project
+Untuk menjalankan project, buka direktori project pada terminal dan jalankan perintah berikut ini. Aplikasi akan secara default berjalan pada port 8080
+
+```shell
+php spark serve
+```
+
+Untuk menentukan port yang digunakan aplikasi, tambahkan argument `--port`
+
+```shell
+php spark serve --port 80
+```
+
 ## Setup
 
 Copy `env` to `.env` and tailor for your app, specifically the baseURL
