@@ -39,6 +39,15 @@ Bagian yang bertugas untuk menampilkan informasi dalam bentuk Graphical User Int
 Controller
 Bagian yang bertugas untuk menghubungkan serta mengatur model dan view agar dapat saling terhubung.
 
+### Alur Model View Controller
+Setelah kamu mengetahui penjelasan dan komponen dari MVC, sekarang kita akan membahas alur proses dari MVC. Berikut ini adalah alur prosesnya.
+
+Proses pertama adalah view akan meminta data untuk ditampilkan dalam bentuk grafis kepada pengguna.
+Permintaan tersebut diterima oleh controller dan diteruskan ke model untuk diproses.
+Model akan mencari dan mengolah data yang diminta di dalam database
+Setelah data ditemukan dan diolah, model akan mengirimkan data tersebut kepada controller untuk ditampilkan di view.
+Controller akan mengambil data hasil pengolahan model dan mengaturnya di bagian view untuk ditampilkan kepada pengguna.
+
 
 ## Important Change with index.php
 
