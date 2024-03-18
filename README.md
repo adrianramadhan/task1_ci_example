@@ -262,14 +262,18 @@ index.php
 
 <?php endif ?>
 ```
+![image](https://github.com/adrianramadhan/task1_ci_example/assets/59206760/79edaa57-1ab1-41df-ac91-93102e7a6b68)
 
-### Halaman View untuk menampilkan detail buku yang kita pilih
+
+### Halaman View untuk menampilkan detail buku yang kita pilih (berdasarkan slug)
 ```
 view.php
 
 <h2><?= esc($books['title']) ?></h2>
 <p><?= esc($books['content']) ?></p>
 ```
+![image](https://github.com/adrianramadhan/task1_ci_example/assets/59206760/2c7f726f-7d27-43d0-9401-4618230b12e8)
+
 
 ### Halaman View untuk menambahkan buku baru
 ```
@@ -294,6 +298,8 @@ create.php
     <input type="submit" name="submit" value="Create books item">
 </form>
 ```
+![image](https://github.com/adrianramadhan/task1_ci_example/assets/59206760/ea2116fc-0e59-4f9f-8afe-3add9b9ee484)
+
 
 ### Halaman View untuk tampilan sukses tambah buku
 ```
@@ -302,3 +308,4 @@ success.php
 <p>Books item created successfully.</p>
 
 ```
+![image](https://github.com/adrianramadhan/task1_ci_example/assets/59206760/922050f7-13a4-41dd-a3e8-f93f11c9526a)
