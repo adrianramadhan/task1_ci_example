@@ -135,3 +135,100 @@ class BooksModel extends Model
 }
 
 ```
+
+## Controller
+Controller adalah sebuah bagian dari sebuah framework aplikasi web yang bertugas mengatur dan mengelola permintaan (request) dan respon (response) antara pengguna dan aplikasi web, berikut Controller dan beberapa method yang ada di projek Aplikasi CI Basic saya
+
+### Class Books
+```
+<?php
+
+namespace App\Controllers;
+use App\Models\BooksModel;
+use CodeIgniter\Exceptions\PageNotFoundException;
+
+class Books extends BaseController {
+    #code untuk 4 method
+}
+```
+
+### Method Index untuk Get Semua Buku
+```
+    public function index()
+    {
+        $model = model(BooksModel::class);
+
+        $data = [
+            'books'  => $model->getBooks(),
+            'title' => 'Books archive',
+        ];
+
+        return view('templates/header', $data)
+            . view('books/index')
+            . view('templates/footer');
+    }
+```
+
+### Method Show untuk Menampilkan buku sesuai dengan Slug
+```  
+    public function show($slug = null)
+    {
+        $model = model(BooksModel::class);
+
+        $data['books'] = $model->getBooks($slug);
+
+        if (empty($data['books'])) {
+            throw new PageNotFoundException('Cannot find the books item: ' . $slug);
+        }
+
+        $data['title'] = $data['books']['title'];
+
+        return view('templates/header', $data) . view('books/view') . view('templates/footer');
+    }
+```
+
+### Method New untuk menampilkan halaman tambah buku 
+```
+    public function new()
+    {
+        helper('form');
+
+        return view('templates/header', ['title' => 'Create a books item'])
+            . view('books/create')
+            . view('templates/footer');
+    }
+```
+
+### Method Create untuk menyimpan Buku Baru ke Database
+```
+    public function create()
+    {
+        helper('form');
+
+        $data = $this->request->getPost(['title', 'content']);
+
+        // Checks whether the submitted data passed the validation rules.
+        if (! $this->validateData($data, [
+            'title' => 'required|min_length[3]|max_length[255]',
+            'content' => 'required|min_length[10]|max_length[5000]',
+        ])) {
+            // The validation fails, so returns the form.
+            return $this->new();
+        }
+
+        // Gets the validated data
+        $post = $this->validator->getValidated();
+
+        $model = model(BooksModel::class);
+
+        $model->save([
+            'title' => $post['title'],
+            'slug' => url_title($post['title'], '=', true),
+            'content' => $post['content'],
+        ]);
+
+        return view('templates/header', ['title' => 'Create a Books item'])
+            . view('books/success')
+            . view('templates/footer');
+    }
+```
